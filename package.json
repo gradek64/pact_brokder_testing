@@ -1,0 +1,28 @@
+{
+  "name": "jest",
+  "version": "1.0.0",
+  "description": "Jest Pact example",
+  "main": "index.js",
+  "scripts": {
+    "server": "node provider/providerService.js",
+    "test:consumer": "jest __tests__/ --runInBand",
+    "test:provider": "jest provider/provider.spec.js",
+    "test": "TEST_INDEX=0 jest __tests__/ --runInBand --setupFiles ./pactSetup.js --setupTestFrameworkScriptFile ./pactTestWrapper.js --config ./ENV_CONFIG.js",
+    "publishManual:pact": "curl -XPUT -H \"Content-Type: application/json\" -d@pacts/myconsumer8-myprovider9.json http://127.0.0.1:80/pacts/provider/MyProvider9/consumer/MyConsumer8/version/1.0.0",
+    "publish:pact": "node ./publishScript.js",
+    "delete:pact": "curl -X DELETE http://127.0.0.1:80/pacticipants/MyConsumer8"
+  },
+  "license": "MIT",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "axios": "^0.14.0",
+    "dotenv": "^6.1.0",
+    "jest-cli": "^21.0.0",
+    "request": "2.88.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.1"
+  }
+}
