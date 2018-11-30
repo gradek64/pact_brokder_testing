@@ -1,6 +1,6 @@
-const { server, importData } = require('./provider.js');
-importData();
+const { server } = require('./provider.js');
+const port = process.env.API_PORT || 9123;
 
-server.listen(8081, () => {
-  console.log('Animal Profile Service listening on http://localhost:8081');
+server.listen(port, () => {
+  console.log(`Provider Service listening on http://localhost:${port}`);
 });

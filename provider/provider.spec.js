@@ -19,6 +19,15 @@ const {
 server.post('/setup', (req, res) => {
   const state = req.body.state;
 
+  console.log('state',state);
+
+  /*
+    *@in req it wil connect to real server
+    *@in res it will compare response from req to pact states
+  */
+
+  /* console.log('req', req);
+  console.log('res',res);
   console.log('req.body.state', req.body.state);
 
   animalRepository.clear();
@@ -28,7 +37,7 @@ server.post('/setup', (req, res) => {
     break;
   default:
     importData();
-  }
+  }*/
 
   res.end();
 });

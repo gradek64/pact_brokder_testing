@@ -1,27 +1,26 @@
 {
   "consumer": {
-    "name": "MyConsumer-Cards"
+    "name": "MyConsumer-Download"
   },
   "provider": {
     "name": "MyProvider"
   },
   "interactions": [
     {
-      "description": "perform login",
-      "providerState": "cards consumer works",
+      "description": "perform download",
+      "providerState": "download consumer works",
       "request": {
         "method": "GET",
-        "path": "/cards",
+        "path": "/getPDF/sample.pdf",
         "headers": {
-          "Accept": "text/html; charset=utf-8"
+          "Accept": "application/pdf"
         }
       },
       "response": {
         "status": 200,
         "headers": {
-          "Content-Type": "text/html; charset=utf-8"
-        },
-        "body": "responds with cards set!"
+          "Content-Type": "application/pdf"
+        }
       }
     }
   ],

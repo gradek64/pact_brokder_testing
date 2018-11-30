@@ -1,51 +1,52 @@
-I, [2018-11-28T12:08:53.585009 #3199]  INFO -- : Registered expected interaction GET /dogs
-D, [2018-11-28T12:08:53.585254 #3199] DEBUG -- : {
-  "description": "a request for projects",
-  "providerState": "i have a list of projects",
+I, [2018-11-30T14:32:23.923139 #7519]  INFO -- : Registered expected interaction GET /login?login=Greg
+D, [2018-11-30T14:32:23.923426 #7519] DEBUG -- : {
+  "description": "perform login",
+  "providerState": "login consumer works",
   "request": {
     "method": "GET",
-    "path": "/dogs",
+    "path": "/login",
+    "query": {
+      "login": [
+        "Greg"
+      ]
+    },
     "headers": {
-      "Accept": "application/json"
+      "Accept": "application/json; charset=utf-8"
     }
   },
   "response": {
     "status": 200,
     "headers": {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json; charset=utf-8"
     },
-    "body": [
-      {
-        "dog": 1
-      }
-    ]
+    "body": {
+      "login": "Greg"
+    }
   }
 }
-I, [2018-11-28T12:08:53.591880 #3199]  INFO -- : Received request GET /dogs
-D, [2018-11-28T12:08:53.591992 #3199] DEBUG -- : {
-  "path": "/dogs",
-  "query": "",
+I, [2018-11-30T14:32:23.930628 #7519]  INFO -- : Received request GET /login?login=Greg
+D, [2018-11-30T14:32:23.930736 #7519] DEBUG -- : {
+  "path": "/login",
+  "query": "login=Greg",
   "method": "get",
   "headers": {
-    "Accept": "application/json",
+    "Accept": "application/json; charset=utf-8",
     "User-Agent": "axios/0.14.0",
     "Host": "localhost:8989",
     "Connection": "close",
     "Version": "HTTP/1.1"
   }
 }
-I, [2018-11-28T12:08:53.592165 #3199]  INFO -- : Found matching response for GET /dogs
-D, [2018-11-28T12:08:53.592225 #3199] DEBUG -- : {
+I, [2018-11-30T14:32:23.930956 #7519]  INFO -- : Found matching response for GET /login?login=Greg
+D, [2018-11-30T14:32:23.931028 #7519] DEBUG -- : {
   "status": 200,
   "headers": {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json; charset=utf-8"
   },
-  "body": [
-    {
-      "dog": 1
-    }
-  ]
+  "body": {
+    "login": "Greg"
+  }
 }
-I, [2018-11-28T12:08:53.597015 #3199]  INFO -- : Verifying - interactions matched
-I, [2018-11-28T12:08:53.600299 #3199]  INFO -- : Cleared interactions
-I, [2018-11-28T12:08:53.603799 #3199]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-login-myprovider.json
+I, [2018-11-30T14:32:23.934483 #7519]  INFO -- : Verifying - interactions matched
+I, [2018-11-30T14:32:23.937716 #7519]  INFO -- : Cleared interactions
+I, [2018-11-30T14:32:23.941149 #7519]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-login-myprovider.json

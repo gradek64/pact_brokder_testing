@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const Pact = require('../../../dist/pact').Pact;
 
-describe('Login\'s API', () => {
+describe('Cards\'s API', () => {
   //testing platform for mock server
   let url = 'http://localhost';
   const port = 8989;
@@ -14,8 +14,8 @@ describe('Login\'s API', () => {
     log: path.resolve(process.cwd(), 'logs', 'mockserver-integration.log'),
     logLevel:'error',
     dir: path.resolve(process.cwd(), 'pacts'),
-    spec: 3, //pact version
-    consumer: 'MyConsumer-Login',
+    spec: 3,
+    consumer: 'MyConsumer-Cards',
     provider: 'MyProvider'
   });
 
@@ -25,14 +25,10 @@ describe('Login\'s API', () => {
   */
   //request
   const method = 'GET';
-  const route = '/login';
-  const queryParam = {login: 'Greg'};
+  const route = '/cards';
   //response
   const status = 200;
-  const contentType = 'application/json; charset=utf-8';
-  const EXPECTED_BODY = {
-    login: 'Greg'
-  };
+  const contentType = 'text/html; charset=utf-8';
 
   beforeAll(() => provider.setup());
   afterAll(() => provider.finalize());
@@ -40,12 +36,11 @@ describe('Login\'s API', () => {
   describe('works', () => {
     beforeAll(() => {
       const interaction = {
-        state: 'login consumer works',
+        state: 'cards consumer works',
         uponReceiving: 'perform login',
         withRequest: {
           method: method,
           path: route,
-          query:queryParam,
           headers: {
             'Accept': contentType
           }
@@ -55,7 +50,7 @@ describe('Login\'s API', () => {
           headers: {
             'Content-Type': contentType
           },
-          body: EXPECTED_BODY
+          body: 'responds with cards set!'
         }
       };
       return provider.addInteraction(interaction);
@@ -65,7 +60,6 @@ describe('Login\'s API', () => {
     it('returns a sucessful login body', done => {
       return axios.request({
         method: method,
-        params: queryParam,
         baseURL: `${url}:${port}`,
         url: route,
         headers: { 'Accept': contentType }

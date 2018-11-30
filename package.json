@@ -8,9 +8,9 @@
     "test:consumer": "jest __tests__/ --runInBand",
     "test:provider": "jest provider/provider.spec.js",
     "test": "TEST_INDEX=0 jest __tests__/ --runInBand --setupFiles ./pactSetup.js --setupTestFrameworkScriptFile ./pactTestWrapper.js --config ./ENV_CONFIG.js",
-    "publishManual:pact": "curl -XPUT -H \"Content-Type: application/json\" -d@pacts/myconsumer8-myprovider9.json http://127.0.0.1:80/pacts/provider/MyProvider9/consumer/MyConsumer8/version/1.0.0",
+    "publishManual:pact": "curl -XPUT -H \"Content-Type: application/json\" -d@pacts/myconsumer-cards-myprovider.json http://127.0.0.1:80/pacts/provider/MyProvider/consumer/MyConsumer-Cards/version/1.0.0",
     "publish:pact": "node ./publishScript.js",
-    "delete:pact": "curl -X DELETE http://127.0.0.1:80/pacticipants/MyConsumer8"
+    "delete:pact": "curl -X DELETE http://127.0.0.1:80/pacticipants/MyConsumer-Cards"
   },
   "license": "MIT",
   "jest": {
