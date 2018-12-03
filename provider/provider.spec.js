@@ -6,9 +6,9 @@ const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = chai.expect;
 const axios = require('axios');
-const {
+/*const {
   VerifierOptions
-} = require('@pact-foundation/pact-node');
+} = require('@pact-foundation/pact-node');*/
 chai.use(chaiAsPromised);
 const {
   server,
@@ -43,15 +43,52 @@ server.post('/setup', (req, res) => {
 });
 
 server.listen(8081, () => {
-  console.log('Animal Profile Service listening on http://localhost:8081');
+  console.log('Localhost Provider listening on http://localhost:8081');
 });
 
 // Verify that the provider meets all consumer expectations
 describe('Pact Verification', () => {
+
   const providerName = 'MyProvider';
-  let pacts = [];
-  const pactBrokerUrl = 'http://localhost';
+  let pactsFromPactBroker = [];
+  const username = '7PE1BDrw97hD7fMoPEIvuRFXyCXeR';
+  const password = 'pUxiGbo3h7wc3w2NWmlFyLVYlEo3nCn';
+  let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+  const publicPort = true;
+  const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
+  const pactBrokerUrl = host;
   const providerBaseUrl = '/pacts/provider/'+providerName;
+
+  const runPact = () => {
+  //it('should validate the expectations of Matching Service', done => { // lexical binding required here
+    //allow spare time for sever to connect;
+    let opts = {
+      provider: 'Animal Profile Service',
+      providerBaseUrl: 'http://localhost:8081',
+      providerStatesSetupUrl: 'http://localhost:8081/setup',
+      // Fetch pacts from broker
+      pactBrokerUrl: 'https://nttdata.pact.dius.com.au/',
+      pactUrls: pactsFromPactBroker,
+      // Fetch from broker with given tags
+      tags: ['prod', 'sit5'],
+      // Specific Remote pacts (doesn't need to be a broker)
+      // pactFilesOrDirs: ['https://test.pact.dius.com.au/pacts/provider/Animal%20Profile%20Service/consumer/Matching%20Service/latest'],
+      // Local pacts
+      // pactFilesOrDirs: [path.resolve(process.cwd(), './pacts/matching_service-animal_profile_service.json')],
+      pactBrokerUsername: '7PE1BDrw97hD7fMoPEIvuRFXyCXeR',
+      pactBrokerPassword: 'pUxiGbo3h7wc3w2NWmlFyLVYlEo3nCn',
+      publishVerificationResult: true,
+      providerVersion: '1.0.0',
+      customProviderHeaders: ['Authorization: basic e5e5e5e5e5e5e5']
+    };
+    new Verifier().verifyProvider(opts)
+      .then(output => {
+        console.log('Pact Verification Complete!');
+        console.log(output);
+        //done();
+      });
+  //});
+  };
 
   /*
       *@request all the files for provider
@@ -61,45 +98,18 @@ describe('Pact Verification', () => {
   it(`retrieves all pacts from given provider: ${providerName}`, done => {
     return axios.request({
       method: 'GET',
+      headers:{
+        Authorization:auth,
+      },
       baseURL: pactBrokerUrl,
       url: providerBaseUrl
     })
       .then(response => { 
-        pacts = response.data._links.pacts.map(pact=> pact.href);
+        pactsFromPactBroker = response.data._links.pacts.map(pact=> pact.href);
         done();
+        runPact();
       });
   });
 
-
-  it('should validate the expectations of Matching Service', done => { // lexical binding required here
-    //this.timeout(10000);
-
-    let opts = {
-      provider: 'Animal Profile Service',
-      providerBaseUrl: 'http://localhost:8081',
-      providerStatesSetupUrl: 'http://localhost:8081/setup',
-      // Fetch pacts from broker
-      //pactBrokerUrl: 'https://test.pact.dius.com.au/',
-      pactUrls: pacts,
-
-      // Fetch from broker with given tags
-      tags: ['prod', 'sit5'],
-      // Specific Remote pacts (doesn't need to be a broker)
-      // pactFilesOrDirs: ['https://test.pact.dius.com.au/pacts/provider/Animal%20Profile%20Service/consumer/Matching%20Service/latest'],
-      // Local pacts
-      // pactFilesOrDirs: [path.resolve(process.cwd(), './pacts/matching_service-animal_profile_service.json')],
-      //pactBrokerUsername: 'dXfltyFMgNOFZAxr8io9wJ37iUpY42M',
-      //pactBrokerPassword: 'O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1',
-      publishVerificationResult: true,
-      providerVersion: '1.0.0',
-      customProviderHeaders: ['Authorization: basic e5e5e5e5e5e5e5']
-    };
-
-    return new Verifier().verifyProvider(opts)
-      .then(output => {
-        console.log('Pact Verification Complete!');
-        console.log(output);
-        done();
-      });
-  });
+  
 });
