@@ -93,7 +93,6 @@ describe('Pact Verification', () => {
       .then(output => {
         console.log('Pact Verification Complete!');
         console.log(output);
-        done();
       });
   //});
   };
