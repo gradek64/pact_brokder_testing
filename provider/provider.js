@@ -47,6 +47,34 @@ server.get('/cards', (req, res) => {
   res.end();
 });
 
+//server.post('/setup', (req, res) => {
+//const state = req.body.state;
+
+/*
+    *@in req it wil connect to real server
+    *@in res it will compare response from req to pact states
+  */
+
+/* console.log('req', req);
+  console.log('res',res);
+  console.log('req.body.state', req.body.state);
+
+  animalRepository.clear();
+  switch (state) {
+  case 'Has no animals':
+    // do nothing
+    break;
+  default:
+    importData();
+  }*/
+/* res.header('Content-Type', 'application/json; charset=utf-8');
+  res.json({
+    setup: req.body,
+  });
+  res.end();
+});*/
+
+
 module.exports = {
   server,
 };

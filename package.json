@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "server": "node provider/providerService.js",
-    "test:consumer": "jest __tests__/ --runInBand",
+    "warn": "echo '!!...turn off your wifi for this test...!!'",
+    "test:consumer": "jest __tests__/ --runInBand && npm run warn",
     "test:provider": "jest provider/provider.spec.js",
     "test": "TEST_INDEX=0 jest __tests__/ --runInBand --setupFiles ./pactSetup.js --setupTestFrameworkScriptFile ./pactTestWrapper.js --config ./ENV_CONFIG.js",
     "publishManual:pact": "curl -XPUT -H \"Content-Type: application/json\" -d@pacts/myconsumer-cards-myprovider.json http://127.0.0.1:80/pacts/provider/MyProvider/consumer/MyConsumer-Cards/version/1.0.0",
     "publish:pact": "node ./publishScript.js",
-    "delete:pact": "curl -X DELETE http://127.0.0.1:80/pacticipants/MyConsumer-Cards"
+    "deleteBunch:pact": "node ./deletePactsScript.js",
+    "delete:pact": "curl -X DELETE http://127.0.0.1:80/pacticipants/MyConsumer-Login"
   },
   "license": "MIT",
   "jest": {

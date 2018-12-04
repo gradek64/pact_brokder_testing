@@ -1,6 +1,10 @@
 const request = require('request');
 const fs = require('fs');
 const path = require('path');
+/*
+  *@publicPort = false for pact broker localhost 
+  *@publicPort = true for pact broker dius
+*/
 const publicPort = true;
 const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
 const PORT = 80;
@@ -28,7 +32,8 @@ fs.readdir( './pacts', ( err, files ) => {
           }
         },
         (error, response, body)=>{
-          console.log('response',response);
+          if(error) console.log('\x1b[31m','upps error ;)',error); 
+          console.log('\x1b[0m','published:'+file);
         }
         ));
     });

@@ -1,52 +1,41 @@
-I, [2018-11-30T14:32:23.923139 #7519]  INFO -- : Registered expected interaction GET /login?login=Greg
-D, [2018-11-30T14:32:23.923426 #7519] DEBUG -- : {
-  "description": "perform login",
-  "providerState": "login consumer works",
+I, [2018-12-04T18:22:38.467829 #7270]  INFO -- : Registered expected interaction GET /getPDF/sample.pdf
+D, [2018-12-04T18:22:38.468077 #7270] DEBUG -- : {
+  "description": "perform download",
+  "providerState": "download consumer works",
   "request": {
     "method": "GET",
-    "path": "/login",
-    "query": {
-      "login": [
-        "Greg"
-      ]
-    },
+    "path": "/getPDF/sample.pdf",
     "headers": {
-      "Accept": "application/json; charset=utf-8"
+      "Accept": "application/pdf"
     }
   },
   "response": {
     "status": 200,
     "headers": {
-      "Content-Type": "application/json; charset=utf-8"
-    },
-    "body": {
-      "login": "Greg"
+      "Content-Type": "application/pdf"
     }
   }
 }
-I, [2018-11-30T14:32:23.930628 #7519]  INFO -- : Received request GET /login?login=Greg
-D, [2018-11-30T14:32:23.930736 #7519] DEBUG -- : {
-  "path": "/login",
-  "query": "login=Greg",
+I, [2018-12-04T18:22:38.474193 #7270]  INFO -- : Received request GET /getPDF/sample.pdf
+D, [2018-12-04T18:22:38.474290 #7270] DEBUG -- : {
+  "path": "/getPDF/sample.pdf",
+  "query": "",
   "method": "get",
   "headers": {
-    "Accept": "application/json; charset=utf-8",
+    "Accept": "application/pdf",
     "User-Agent": "axios/0.14.0",
     "Host": "localhost:8989",
     "Connection": "close",
     "Version": "HTTP/1.1"
   }
 }
-I, [2018-11-30T14:32:23.930956 #7519]  INFO -- : Found matching response for GET /login?login=Greg
-D, [2018-11-30T14:32:23.931028 #7519] DEBUG -- : {
+I, [2018-12-04T18:22:38.474422 #7270]  INFO -- : Found matching response for GET /getPDF/sample.pdf
+D, [2018-12-04T18:22:38.474493 #7270] DEBUG -- : {
   "status": 200,
   "headers": {
-    "Content-Type": "application/json; charset=utf-8"
-  },
-  "body": {
-    "login": "Greg"
+    "Content-Type": "application/pdf"
   }
 }
-I, [2018-11-30T14:32:23.934483 #7519]  INFO -- : Verifying - interactions matched
-I, [2018-11-30T14:32:23.937716 #7519]  INFO -- : Cleared interactions
-I, [2018-11-30T14:32:23.941149 #7519]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-login-myprovider.json
+I, [2018-12-04T18:22:38.478168 #7270]  INFO -- : Verifying - interactions matched
+I, [2018-12-04T18:22:38.481295 #7270]  INFO -- : Cleared interactions
+I, [2018-12-04T18:22:38.484694 #7270]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-download-myprovider.json

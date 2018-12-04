@@ -16,10 +16,10 @@ const {
   animalRepository
 } = require('./provider.js');
 
-server.post('/setup', (req, res) => {
+server.post('/setups', (req, res) => {
+  console.log('....state.....',req);
   const state = req.body.state;
 
-  console.log('state',state);
 
   /*
     *@in req it wil connect to real server
@@ -42,9 +42,9 @@ server.post('/setup', (req, res) => {
   res.end();
 });
 
-server.listen(8081, () => {
+/*server.listen(8081, () => {
   console.log('Localhost Provider listening on http://localhost:8081');
-});
+});*/
 
 // Verify that the provider meets all consumer expectations
 describe('Pact Verification', () => {
@@ -62,12 +62,20 @@ describe('Pact Verification', () => {
   const runPact = () => {
   //it('should validate the expectations of Matching Service', done => { // lexical binding required here
     //allow spare time for sever to connect;
+
+    console.log('pactsFromPactBroker',pactsFromPactBroker);
     let opts = {
-      provider: 'Animal Profile Service',
-      providerBaseUrl: 'http://localhost:8081',
-      providerStatesSetupUrl: 'http://localhost:8081/setup',
+      provider: 'MyProvider',
+      //providerBaseUrl: 'http://localhost:8081',
+      /*
+        *@below based on file
+        *@api-pact-workshop-real-API/server/expressServer
+      */
+      providerBaseUrl: 'https://pact-test-greg.herokuapp.com',
+      //providerStatesSetupUrl: 'http://localhost:8081/setup',
       // Fetch pacts from broker
-      pactBrokerUrl: 'https://nttdata.pact.dius.com.au/',
+      //pactBrokerUrl: 'http://127.0.0.1',
+      //pactBrokerUrl: 'https://nttdata.pact.dius.com.au/',
       pactUrls: pactsFromPactBroker,
       // Fetch from broker with given tags
       tags: ['prod', 'sit5'],
@@ -85,7 +93,7 @@ describe('Pact Verification', () => {
       .then(output => {
         console.log('Pact Verification Complete!');
         console.log(output);
-        //done();
+        done();
       });
   //});
   };

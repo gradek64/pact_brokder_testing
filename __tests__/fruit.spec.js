@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const Pact = require('../../../dist/pact').Pact;
 
-describe('Cards\'s API', () => {
+describe('fruits\'s API', () => {
   //testing platform for mock server
   let url = 'http://localhost';
   const port = 8989;
@@ -15,7 +15,7 @@ describe('Cards\'s API', () => {
     logLevel:'error',
     dir: path.resolve(process.cwd(), 'pacts'),
     spec: 3,
-    consumer: 'MyConsumer-Card',
+    consumer: 'MyConsumer-Fruit',
     provider: 'MyProvider'
   });
 
@@ -25,7 +25,7 @@ describe('Cards\'s API', () => {
   */
   //request
   const method = 'GET';
-  const route = '/cards';
+  const route = '/fruits';
   //response
   const status = 200;
   const contentType = 'text/html; charset=utf-8';
@@ -36,8 +36,8 @@ describe('Cards\'s API', () => {
   describe('works', () => {
     beforeAll(() => {
       const interaction = {
-        state: 'cards consumer works',
-        uponReceiving: 'perform login',
+        state: 'fruits consumer works',
+        uponReceiving: 'finds fruits',
         withRequest: {
           method: method,
           path: route,
@@ -50,7 +50,7 @@ describe('Cards\'s API', () => {
           headers: {
             'Content-Type': contentType
           },
-          body: 'responds with cards set!'
+          body: 'today you should have bannana!'
         }
       };
       return provider.addInteraction(interaction);
