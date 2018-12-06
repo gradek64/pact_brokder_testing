@@ -1,15 +1,10 @@
 const {
   Verifier
-} = require('../../../dist/pact');
-const path = require('path');
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-const expect = chai.expect;
+} = require('../dist/pact');
 const axios = require('axios');
 /*const {
   VerifierOptions
 } = require('@pact-foundation/pact-node');*/
-chai.use(chaiAsPromised);
 const {
   server,
   importData,
