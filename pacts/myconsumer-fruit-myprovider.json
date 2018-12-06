@@ -1,0 +1,33 @@
+{
+  "consumer": {
+    "name": "MyConsumer-Fruit"
+  },
+  "provider": {
+    "name": "MyProvider"
+  },
+  "interactions": [
+    {
+      "description": "finds fruits",
+      "providerState": "fruits consumer works",
+      "request": {
+        "method": "GET",
+        "path": "/fruits",
+        "headers": {
+          "Accept": "text/html; charset=utf-8"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8"
+        },
+        "body": "today you should have bannana!"
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  }
+}

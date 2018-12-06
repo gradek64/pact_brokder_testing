@@ -2,28 +2,33 @@ const {
   Verifier
 } = require('../dist/pact');
 const axios = require('axios');
-/*const {
-  VerifierOptions
-} = require('@pact-foundation/pact-node');*/
-const {
-  server,
-  importData,
-  animalRepository
-} = require('./provider.js');
+//vars to update per provider
+const providerName = 'MyProvider';
+let pactsFromPactBroker = [];
+const credentials = require('dotenv').load();
+const username = credentials.parsed.USERNAME.toString();
+const password = credentials.parsed.PASSWORD.toString();
+let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+/*
+  *@publicPort = false for pact broker localhost 
+  *@publicPort = true for pact broker dius
+*/
+const publicPort = true;
 
-server.post('/setups', (req, res) => {
+//pact broker
+const pactBroker_PORT = 80;
+let pathURL = publicPort?'':':'+pactBroker_PORT;
+const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
+const pactBrokerUrl = host + pathURL;
+const providerBaseUrl = '/pacts/provider/'+providerName;
+
+//server
+const serverUrl = publicPort ? 'https://pact-test-greg.herokuapp.com': 'http://127.0.0.1:8080';
+
+//this is only need if data needs setup with database
+/*server.post('/setups', (req, res) => {
   console.log('....state.....',req);
   const state = req.body.state;
-
-
-  /*
-    *@in req it wil connect to real server
-    *@in res it will compare response from req to pact states
-  */
-
-  /* console.log('req', req);
-  console.log('res',res);
-  console.log('req.body.state', req.body.state);
 
   animalRepository.clear();
   switch (state) {
@@ -32,10 +37,10 @@ server.post('/setups', (req, res) => {
     break;
   default:
     importData();
-  }*/
+  }
 
   res.end();
-});
+});*/
 
 /*server.listen(8081, () => {
   console.log('Localhost Provider listening on http://localhost:8081');
@@ -43,30 +48,19 @@ server.post('/setups', (req, res) => {
 
 // Verify that the provider meets all consumer expectations
 describe('Pact Verification', () => {
-
-  const providerName = 'MyProvider';
-  let pactsFromPactBroker = [];
-  const username = '7PE1BDrw97hD7fMoPEIvuRFXyCXeR';
-  const password = 'pUxiGbo3h7wc3w2NWmlFyLVYlEo3nCn';
-  let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
-  const publicPort = true;
-  const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
-  const pactBrokerUrl = host;
-  const providerBaseUrl = '/pacts/provider/'+providerName;
-
   const runPact = () => {
   //it('should validate the expectations of Matching Service', done => { // lexical binding required here
     //allow spare time for sever to connect;
 
     console.log('pactsFromPactBroker',pactsFromPactBroker);
     let opts = {
-      provider: 'MyProvider',
+      provider: providerName,
       //providerBaseUrl: 'http://localhost:8081',
       /*
         *@below based on file
         *@api-pact-workshop-real-API/server/expressServer
       */
-      providerBaseUrl: 'https://pact-test-greg.herokuapp.com',
+      providerBaseUrl: serverUrl,
       //providerStatesSetupUrl: 'http://localhost:8081/setup',
       // Fetch pacts from broker
       //pactBrokerUrl: 'http://127.0.0.1',

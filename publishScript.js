@@ -2,22 +2,13 @@ const request = require('request');
 const fs = require('fs');
 const path = require('path');
 const credentials = require('dotenv').load();
-const axios = require('axios');
-//this needs to be chngend based on provider name in pact broker
-const provider = 'MyProvider';
 /*
   *@publicPort = false for pact broker localhost 
   *@publicPort = true for pact broker dius
 */
-const publicPort = true;
+const publicPort = false;
 const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
 const PORT = 80;
-
-
-console.log('credentials.USERNAME',credentials.parsed.USERNAME);
-
-
-
 
 fs.readdir( './pacts', ( err, files ) => {
   files.forEach( ( file ) => {
