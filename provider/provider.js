@@ -1,25 +1,29 @@
-const express = require('express');
-const cors = require('cors');
+var express = require('express');
+var app = express();
 const bodyParser = require('body-parser');
-const server = express();
+const cors = require('cors');
 const path = require('path');
 
-server.use(cors());
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
-server.set('views', path.join(__dirname, 'views'));
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+// make express look in the public directory for assets (css/js/img)
+//app.use(express.static(__dirname + '/public'));
 
-/*server.use((_, res, next) => {
-  res.header('Content-Type', 'application/json; charset=utf-8');
-  next();
-});*/
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-server.get('/', (req, res) => {
-  res.write('hello clients!');
-  res.end();
+// set the home page route
+app.get('/', function(req, res) {
+  res.header('Content-Type', 'text/html; charset=utf-8');
+  // ejs render automatically looks in the views folder
+  res.render('index');
+  //res.end('hi');
 });
 
-server.get('/getPDF/:download', (req, res) => {
+app.get('/getPDF/:download', (req, res) => {
   var filename = req.params.download;
   res.setHeader('Content-type', 'application/pdf');
   const viewsPath = path.join(__dirname,'views');
@@ -27,7 +31,7 @@ server.get('/getPDF/:download', (req, res) => {
   res.download(file,filename);
 });
 
-server.get('/login', (req, res) => {
+app.get('/login', (req, res) => {
   const login = req.query.login;
   res.header('Content-Type', 'application/json; charset=utf-8');
 
@@ -41,40 +45,24 @@ server.get('/login', (req, res) => {
   }
 });
 
-server.get('/cards', (req, res) => {
+app.get('/cards', (req, res) => {
   res.header('Content-Type', 'text/html');
   res.write('responds with cards set!');
   res.end();
 });
 
-//server.post('/setup', (req, res) => {
-//const state = req.body.state;
-
-/*
-    *@in req it wil connect to real server
-    *@in res it will compare response from req to pact states
-  */
-
-/* console.log('req', req);
-  console.log('res',res);
-  console.log('req.body.state', req.body.state);
-
-  animalRepository.clear();
-  switch (state) {
-  case 'Has no animals':
-    // do nothing
-    break;
-  default:
-    importData();
-  }*/
-/* res.header('Content-Type', 'application/json; charset=utf-8');
-  res.json({
-    setup: req.body,
-  });
+app.get('/fruits', (req, res) => {
+  res.header('Content-Type', 'text/html');
+  res.write('today you should have bannana!');
   res.end();
-});*/
+});
 
+app.get('/json', (req, res) => {
+  //specifif header only for this route
+  res.header('Content-Type', 'application/json; charset=utf-8');
+  res.json({json:'it is json response object set'});
+});
 
-module.exports = {
-  server,
-};
+app.listen(port, function() {
+  console.log('Our app is running on http://localhost:' + port);
+});

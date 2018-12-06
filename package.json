@@ -4,7 +4,7 @@
   "description": "Jest Pact example",
   "main": "index.js",
   "scripts": {
-    "server": "node provider/providerService.js",
+    "local-server": "node provider/provider.js",
     "warn": "echo '!!...turn off your wifi for this test...!!'",
     "test:consumer": "jest __tests__/ --runInBand && npm run warn",
     "test:provider": "jest provider/provider.spec.js",
