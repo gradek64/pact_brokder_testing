@@ -2,7 +2,7 @@
 
 const path = require('path');
 const axios = require('axios');
-const Pact = require('../../../dist/pact').Pact;
+const Pact = require('../dist/pact').Pact;
 
 describe('Cards\'s API', () => {
   //testing platform for mock server

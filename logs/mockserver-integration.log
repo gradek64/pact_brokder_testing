@@ -1,41 +1,43 @@
-I, [2018-12-04T18:22:38.467829 #7270]  INFO -- : Registered expected interaction GET /getPDF/sample.pdf
-D, [2018-12-04T18:22:38.468077 #7270] DEBUG -- : {
-  "description": "perform download",
-  "providerState": "download consumer works",
+I, [2018-12-06T14:16:56.811682 #3248]  INFO -- : Registered expected interaction GET /cards
+D, [2018-12-06T14:16:56.811901 #3248] DEBUG -- : {
+  "description": "perform login",
+  "providerState": "cards consumer works",
   "request": {
     "method": "GET",
-    "path": "/getPDF/sample.pdf",
+    "path": "/cards",
     "headers": {
-      "Accept": "application/pdf"
+      "Accept": "text/html; charset=utf-8"
     }
   },
   "response": {
     "status": 200,
     "headers": {
-      "Content-Type": "application/pdf"
-    }
+      "Content-Type": "text/html; charset=utf-8"
+    },
+    "body": "responds with cards set!"
   }
 }
-I, [2018-12-04T18:22:38.474193 #7270]  INFO -- : Received request GET /getPDF/sample.pdf
-D, [2018-12-04T18:22:38.474290 #7270] DEBUG -- : {
-  "path": "/getPDF/sample.pdf",
+I, [2018-12-06T14:16:56.820024 #3248]  INFO -- : Received request GET /cards
+D, [2018-12-06T14:16:56.820114 #3248] DEBUG -- : {
+  "path": "/cards",
   "query": "",
   "method": "get",
   "headers": {
-    "Accept": "application/pdf",
+    "Accept": "text/html; charset=utf-8",
     "User-Agent": "axios/0.14.0",
     "Host": "localhost:8989",
     "Connection": "close",
     "Version": "HTTP/1.1"
   }
 }
-I, [2018-12-04T18:22:38.474422 #7270]  INFO -- : Found matching response for GET /getPDF/sample.pdf
-D, [2018-12-04T18:22:38.474493 #7270] DEBUG -- : {
+I, [2018-12-06T14:16:56.820245 #3248]  INFO -- : Found matching response for GET /cards
+D, [2018-12-06T14:16:56.820308 #3248] DEBUG -- : {
   "status": 200,
   "headers": {
-    "Content-Type": "application/pdf"
-  }
+    "Content-Type": "text/html; charset=utf-8"
+  },
+  "body": "responds with cards set!"
 }
-I, [2018-12-04T18:22:38.478168 #7270]  INFO -- : Verifying - interactions matched
-I, [2018-12-04T18:22:38.481295 #7270]  INFO -- : Cleared interactions
-I, [2018-12-04T18:22:38.484694 #7270]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-download-myprovider.json
+I, [2018-12-06T14:16:56.823898 #3248]  INFO -- : Verifying - interactions matched
+I, [2018-12-06T14:16:56.827413 #3248]  INFO -- : Cleared interactions
+I, [2018-12-06T14:16:56.832064 #3248]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-card-myprovider.json
