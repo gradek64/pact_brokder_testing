@@ -1,5 +1,5 @@
-I, [2018-12-06T17:37:34.094384 #6986]  INFO -- : Registered expected interaction GET /cards
-D, [2018-12-06T17:37:34.094597 #6986] DEBUG -- : {
+I, [2018-12-11T16:14:47.433661 #2376]  INFO -- : Registered expected interaction GET /cards
+D, [2018-12-11T16:14:47.433882 #2376] DEBUG -- : {
   "description": "perform login",
   "providerState": "cards consumer works",
   "request": {
@@ -17,8 +17,8 @@ D, [2018-12-06T17:37:34.094597 #6986] DEBUG -- : {
     "body": "responds with cards set!"
   }
 }
-I, [2018-12-06T17:37:34.102284 #6986]  INFO -- : Received request GET /cards
-D, [2018-12-06T17:37:34.102388 #6986] DEBUG -- : {
+I, [2018-12-11T16:14:47.441396 #2376]  INFO -- : Received request GET /cards
+D, [2018-12-11T16:14:47.441489 #2376] DEBUG -- : {
   "path": "/cards",
   "query": "",
   "method": "get",
@@ -30,14 +30,14 @@ D, [2018-12-06T17:37:34.102388 #6986] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2018-12-06T17:37:34.102513 #6986]  INFO -- : Found matching response for GET /cards
-D, [2018-12-06T17:37:34.102575 #6986] DEBUG -- : {
+I, [2018-12-11T16:14:47.441660 #2376]  INFO -- : Found matching response for GET /cards
+D, [2018-12-11T16:14:47.441756 #2376] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "text/html; charset=utf-8"
   },
   "body": "responds with cards set!"
 }
-I, [2018-12-06T17:37:34.106097 #6986]  INFO -- : Verifying - interactions matched
-I, [2018-12-06T17:37:34.109568 #6986]  INFO -- : Cleared interactions
-I, [2018-12-06T17:37:34.113127 #6986]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/pact-contract-testing/official/examples/jest/pacts/myconsumer-card-myprovider.json
+I, [2018-12-11T16:14:47.445526 #2376]  INFO -- : Verifying - interactions matched
+I, [2018-12-11T16:14:47.449246 #2376]  INFO -- : Cleared interactions
+I, [2018-12-11T16:14:47.452781 #2376]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/greg-testing/pacts/myconsumer-card-myprovider.json
