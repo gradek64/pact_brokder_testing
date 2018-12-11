@@ -20,11 +20,11 @@ Also note the publish is a separate task. As there is no real afterAll it is dif
 
 
 -------- Instalation on Windows- --------
-1)Install node.js 
-2)Install git
-3)clone repository https://github.com/gradek64/pact_brokder_testing
-4)Install Ruby 2.5.* with DevKIT 
-5)Then install ruby gem for Pact:....:   gem i json pact-mock_service
-6)run npm install in the direcorty cloned;
+1. Install node.js 
+2. Install git
+3. clone repository https://github.com/gradek64/pact_brokder_testing
+4. Install Ruby 2.5.* with DevKIT 
+5. Then install ruby gem for Pact:....:  `gem i json pact-mock_service`
+6. run npm install in the direcorty cloned;
 
 
