@@ -18,3 +18,13 @@ in the provider to get pacts appended to.
 
 Also note the publish is a separate task. As there is no real afterAll it is difficult to know when to publish in normal running so I had to extract it.
 
+
+-------- Instalation on Windows- --------
+1. Install node.js 
+2. Install git
+3. clone this repository
+4. Install Ruby 2.5.* with DevKIT 
+5. Then install ruby gem for Pact:....:  `gem i json pact-mock_service`
+6. run `npm install` in this directory;
+
+
