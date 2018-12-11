@@ -25,11 +25,17 @@
   },
   "dependencies": {
     "@pact-foundation/pact-node": "6.16.1",
+    "@types/bunyan": "1.8.3",
     "@types/cli-color": "0.3.29",
     "@types/lodash": "4.14.73",
     "bunyan": "1.8.12",
-    "@types/bunyan": "1.8.3",
     "bunyan-prettystream": "0.1.3",
+    "cli-color": "^1.1.0",
+    "cors": "2.8.1",
+    "es6-object-assign": "1.1.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.1",
     "lodash": "4.17.4",
     "lodash.isfunction": "3.0.8",
     "lodash.isnil": "4.0.0",
@@ -37,8 +43,6 @@
     "lodash.omit": "4.5.0",
     "lodash.omitby": "4.6.0",
     "pkginfo": "0.4.1",
-    "es6-object-assign": "1.1.0",
-    "popsicle": "9.2.0",
-    "cors": "2.8.1"
+    "popsicle": "9.2.0"
   }
 }
