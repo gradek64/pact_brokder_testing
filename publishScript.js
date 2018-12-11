@@ -6,7 +6,7 @@ const credentials = require('dotenv').load();
   *@publicPort = false for pact broker localhost 
   *@publicPort = true for pact broker dius
 */
-const publicPort = false;
+const publicPort = true;
 const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
 const PORT = 80;
 

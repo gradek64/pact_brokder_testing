@@ -11,7 +11,7 @@ let auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
   *@for localhost publicPort = false
   *@for dius publicPort = true;
 */
-const publicPort = false;
+const publicPort = true;
 const host = publicPort ? 'https://nttdata.pact.dius.com.au': 'http://127.0.0.1';
 const PORT = 80;
 let pathURL = publicPort?'':':'+PORT;
