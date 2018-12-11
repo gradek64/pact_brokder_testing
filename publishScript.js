@@ -18,7 +18,7 @@ fs.readdir( './pacts', ( err, files ) => {
       let path = publicPort?'':':'+PORT;
       const username = credentials.parsed.USERNAME.toString();
       const password = credentials.parsed.PASSWORD.toString();
-      let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+      let auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 
       fs.createReadStream(currentPath,'utf8')
         .pipe(request.put(host + path +'/pacts/provider/'

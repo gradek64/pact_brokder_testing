@@ -6,7 +6,7 @@ const credentials = require('dotenv').load();
 const providerName = 'MyProvider';
 const username = credentials.parsed.USERNAME.toString();
 const password = credentials.parsed.PASSWORD.toString();
-let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+let auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 /*
   *@for localhost publicPort = false
   *@for dius publicPort = true;
