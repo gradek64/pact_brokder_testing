@@ -29,7 +29,7 @@ Also note the publish is a separate task. As there is no real afterAll it is dif
 
 ------- The order of executing test-----
 
-1. `npm run test:consumer` !! remember to turn of your wifi for this test due to mock-server connecting issue if flags problem!!
+1. `npm run test:consumer` !! remember to turn off your wifi for this test due to mock-server connecting issue if flags problem!!
 2. `npm run publish:pact`  !!turn your wifi back on is connecting to dius!!
 3. `npm run test:provider`  !!turn your wifi back on is connecting to dius!!
 4. `npm run deleteBunch:pact`  --deletes all pacts from dius for provider !!turn your wifi back on is connecting to dius!!
