@@ -8,7 +8,7 @@ let pactsFromPactBroker = [];
 const credentials = require('dotenv').load();
 const username = credentials.parsed.USERNAME.toString();
 const password = credentials.parsed.PASSWORD.toString();
-let auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+let auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
 /*
   *@publicPort = false for pact broker localhost 
   *@publicPort = true for pact broker dius
