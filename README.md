@@ -28,6 +28,8 @@ Also note the publish is a separate task. As there is no real afterAll it is dif
 6. run `npm install` in this directory;
 
 ------- The order of executing test-----
+  
+  /* U do need pact dius credentials for point from 2-4 below*/
 
 1. `npm run test:consumer` !! remember to turn off your wifi for this test due to mock-server connecting issue if flags problem!!
 2. `npm run publish:pact`  !!turn your wifi back on is connecting to dius!!
