@@ -1,6 +1,6 @@
 const {
   Verifier
-} = require('../dist/pact');
+} = require('../../dist/pact');
 const axios = require('axios');
 //vars to update per provider
 const providerName = 'MyProvider';
