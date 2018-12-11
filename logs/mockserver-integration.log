@@ -1,5 +1,5 @@
-I, [2018-12-11T21:19:41.443015 #667]  INFO -- : Registered expected interaction GET /getPDF/sample.pdf
-D, [2018-12-11T21:19:41.443250 #667] DEBUG -- : {
+I, [2018-12-11T22:31:28.670838 #2290]  INFO -- : Registered expected interaction GET /getPDF/sample.pdf
+D, [2018-12-11T22:31:28.671062 #2290] DEBUG -- : {
   "description": "perform download",
   "providerState": "download consumer works",
   "request": {
@@ -16,8 +16,8 @@ D, [2018-12-11T21:19:41.443250 #667] DEBUG -- : {
     }
   }
 }
-I, [2018-12-11T21:19:41.452583 #667]  INFO -- : Received request GET /getPDF/sample.pdf
-D, [2018-12-11T21:19:41.452709 #667] DEBUG -- : {
+I, [2018-12-11T22:31:28.678569 #2290]  INFO -- : Received request GET /getPDF/sample.pdf
+D, [2018-12-11T22:31:28.678667 #2290] DEBUG -- : {
   "path": "/getPDF/sample.pdf",
   "query": "",
   "method": "get",
@@ -29,13 +29,13 @@ D, [2018-12-11T21:19:41.452709 #667] DEBUG -- : {
     "Version": "HTTP/1.1"
   }
 }
-I, [2018-12-11T21:19:41.452897 #667]  INFO -- : Found matching response for GET /getPDF/sample.pdf
-D, [2018-12-11T21:19:41.452983 #667] DEBUG -- : {
+I, [2018-12-11T22:31:28.678816 #2290]  INFO -- : Found matching response for GET /getPDF/sample.pdf
+D, [2018-12-11T22:31:28.678888 #2290] DEBUG -- : {
   "status": 200,
   "headers": {
     "Content-Type": "application/pdf"
   }
 }
-I, [2018-12-11T21:19:41.456928 #667]  INFO -- : Verifying - interactions matched
-I, [2018-12-11T21:19:41.460229 #667]  INFO -- : Cleared interactions
-I, [2018-12-11T21:19:41.463563 #667]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/greg-testing/pacts/myconsumer-download-myprovider.json
+I, [2018-12-11T22:31:28.682696 #2290]  INFO -- : Verifying - interactions matched
+I, [2018-12-11T22:31:28.686228 #2290]  INFO -- : Cleared interactions
+I, [2018-12-11T22:31:28.689706 #2290]  INFO -- : Writing pact for MyProvider to /Users/gilgrz/testing-pact/pacts/myconsumer-download-myprovider.json
